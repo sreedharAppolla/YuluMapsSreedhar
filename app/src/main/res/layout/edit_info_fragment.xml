@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.fragments.EditInfoFragment"
+    >
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.yulumapssreedhar.presenter.EditInfoPresenter" />
+        <variable
+            name="isAddDetails"
+            type="Boolean" />
+        <variable
+            name="detailsListPojo"
+            type="com.example.yulumapssreedhar.model.pojoClasses.DetailListPojo" />
+        <variable
+            name="detailsListPojoRef"
+            type="com.example.yulumapssreedhar.model.pojoClasses.DetailListPojo" />
+        <import type="android.view.View"/>
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_height="52dp">
+        <ImageView
+            android:id="@+id/back_button"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_arros"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{()->presenter.backClick()}"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/screen_title"
+            android:text="@{isAddDetails ? @string/add_place:@string/edit_place}"
+            style="@style/TitleText"/>
+        <EditText
+            android:text="@={detailsListPojo.title}"
+            android:id="@+id/edit_title"
+            style="@style/CustomEditText"
+            android:hint="Add Title"
+           />
+        <EditText
+            android:id="@+id/edit_info"
+            style="@style/CustomEditText"
+            android:gravity="start"
+            android:hint="Enter Description"
+            android:layout_marginTop="12dp"
+            android:layout_height="100dp"/>
+
+        <RelativeLayout
+            android:id="@+id/edit_image_relative"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        <EditText
+            android:text="@={detailsListPojo.image}"
+            android:id="@+id/change_image"
+            style="@style/CustomEditText"
+            android:layout_marginTop="0dp"
+            android:clickable="false"
+            android:hint="@{isAddDetails?@string/add_url:@string/edit_url}" />
+
+            <ImageView
+                android:layout_marginEnd="6dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/camera"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <RelativeLayout
+                android:onClick="@{()->presenter.uploadImageClick()}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+        <EditText
+            android:text="@{String.format(String.valueOf(detailsListPojo.latitude)+','+String.valueOf(detailsListPojo.longitude))}"
+            android:id="@+id/edit_lat_lng"
+            style="@style/CustomEditText"
+            android:layout_marginTop="0dp"
+            android:hint="change LatLng"
+            android:editable="false"
+            android:clickable="false"
+            />
+
+            <ImageView
+                android:layout_marginEnd="6dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/arrow_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <RelativeLayout
+                android:onClick="@{()->presenter.latLngClick(detailsListPojo)}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/save_location"
+            android:onClick="@{(View)->presenter.saveInfo(View,isAddDetails,detailsListPojo,detailsListPojoRef)}"
+            android:layout_marginTop="200dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_border"
+            android:paddingEnd="60dp"
+            android:paddingStart="60dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/TitleText"
+                android:text="Save"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
+</layout>

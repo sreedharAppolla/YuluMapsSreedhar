@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">YuluMapsSreedhar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="map_key" translatable="false">AIzaSyClQ-KUj7wHmZb_GL_u37l-xyr7nYxZEIQ</string>
+    <string name="add_place">Add Place</string>
+    <string name="edit_place">Edit Place</string>
+    <string name="add_url">Add Url</string>
+    <string name="edit_url">Edit Url</string>
+    <string name="lorem_ipsum">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero De Finibus Bonorum et Malorum for use in a type specimen book.</string>
+</resources>

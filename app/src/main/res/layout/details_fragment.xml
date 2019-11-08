@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragments.DetailsFragment">
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.yulumapssreedhar.presenter.DetailPresenter" />
+        <variable
+            name="detailsModel"
+            type="com.example.yulumapssreedhar.model.pojoClasses.DetailListPojo" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <include
+        layout="@layout/toolbar_back"
+        bind:presenter="@{presenter}"
+        bind:detailsModel="@{detailsModel}"
+        />
+
+    <ImageView
+        android:id="@+id/user_image"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@drawable/map" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@{detailsModel.title}"
+            android:layout_marginTop="6dp"
+            android:id="@+id/title_text"
+            style="@style/TitleText" />
+
+        <TextView
+            android:layout_marginTop="12dp"
+            android:id="@+id/sub_title_text"
+            style="@style/SubTitleText" />
+
+        <RelativeLayout
+            android:background="@drawable/cell_border"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginStart="6dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/lat_lng"
+                style="@style/SubTitleText"
+                android:text="@{String.format(String.valueOf(detailsModel.latitude)+','+String.valueOf(detailsModel.longitude))}"
+
+
+                />
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <RelativeLayout
+                android:id="@+id/lat_lang_click"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{(View)->presenter.latLngClick(detailsModel)}"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="12dp"
+            android:id="@+id/description_text"
+            android:textColor="@color/black"
+            android:text="@string/lorem_ipsum"
+            style="@style/SubTitleText" />
+    </LinearLayout>
+
+
+</LinearLayout>
+</layout>

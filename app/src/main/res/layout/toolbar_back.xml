@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.yulumapssreedhar.presenter.DetailPresenter" />
+        <variable
+            name="detailsModel"
+            type="com.example.yulumapssreedhar.model.pojoClasses.DetailListPojo" />
+    </data>
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="52dp">
+    <ImageView
+        android:id="@+id/back_button"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/back_arros"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="@{(View)->presenter.backClick()}"
+        />
+
+    <ImageView
+        android:id="@+id/edit_button"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/edit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="@{(View)->presenter.editClick(detailsModel)}"
+        />
+
+</RelativeLayout>
+</layout>
